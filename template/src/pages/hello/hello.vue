@@ -43,7 +43,7 @@
         <hr>
         <div class='caselist'>
             <div class='case'>
-                计数：{{getCount}}
+                计数：\{{getCount}}
             </div>
             <div class='case'>
                 <button @click='incrementCounter'>加加</button>
