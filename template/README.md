@@ -2,7 +2,7 @@
 
 > {{ description }}
 
-支持在一个项目中发布多个独立应用或单个应用
+bootstrap template for wecloud apps
 
 1. src/pages 目录下包含多个应用(hello1, hello2)
 

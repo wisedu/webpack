@@ -29,7 +29,6 @@
                 <i class='fa fa-road fa-spin'></i>
             </div>
         </div>
-	{{#i18n}}
         <h3>多语言测试</h3>
         <hr>
         <div class='caselist'>
@@ -40,7 +39,6 @@
                 <button @click='toggleLang'>\{{$t('switchLang')}}</button>
             </div>
         </div>
-	{{/i18n}}
     </div>
 </template>
 
@@ -61,11 +59,9 @@
             say () {
                 alert('正常 !');
             },
-	    {{#i18n}}
             toggleLang () {
                 Vue.config.lang = Vue.config.lang === 'en' ? 'cn' : 'en';
             }
-	    {{/i18n}}
         },
         created () {
             console.log('created');

@@ -1,10 +1,10 @@
 # vue-webpack-boilerplate
 
-> webpack + vue 启动模板
+> wecloud app 启动模板
 
 安装方式
 ```
-vue init lkiarest/webpack#app my-project
+vue init lkiarest/webpack#wecloud my-project
 ```
 
 ## Documentation
