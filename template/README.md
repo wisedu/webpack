@@ -2,12 +2,16 @@
 
 基于自定义 (webpack-vue 模板)[https://github.com/lkiarest/webpack/tree/wecloud] 创建
 
+仅提供模板工程，不做任何多余的事情(The Single Responsibility Principle)
+
 ### 多语言
 
-1. 将多语言文件(cn.json , en.json ...) 放在src/config/i18n 目录下，编译工具会自动使用 vue-i18n 将多语言注入到app中。
-1. 页面中只要按照 vue-i8n 的[文档](https://github.com/kazupon/vue-i18n) 书写即可
+1. 将多语言文件(cn.json , en.json ...) 放在src/config/i18n 目录下，编译工具会使用 vue-i18n 将多语言注入到app中。
+1. 页面按照 vue-i8n 的[文档](https://github.com/kazupon/vue-i18n) 书写即可
 
 ### Vuex
+
+默认支持，可参考示例（hello）用法。
 
 ### 可在一个项目中发布多个独立应用或单个应用
 
