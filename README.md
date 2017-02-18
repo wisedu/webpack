@@ -9,13 +9,16 @@ vue init lkiarest/webpack#wecloud my-project
 
 ## Documentation
 
-> 支持在一个项目中发布多个独立应用或单个应用
+### 可在一个项目中发布多个独立应用或单个应用
 
 1. src/pages 目录下包含多个应用(hello1, hello2)
 
     打包后会在dist中生成多个独立的app发布目录，使用app名称区分。
 
     ```
+    // 开发模式
+    npm run dev
+    // 发布模式
     npm run build
     ./startup.bat #启动http server
     // 访问 http://localhost:3000/hello1/index.html
@@ -26,6 +29,9 @@ vue init lkiarest/webpack#wecloud my-project
 
     打包后会在dist中生成独立的发布目录，直接放在根目录下。
     ```
+    // 开发模式
+    npm run dev
+    // 发布模式
     npm run build
     ./startup.bat #启动http server
     // 访问 http://localhost:3000/index.html
