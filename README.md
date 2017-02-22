@@ -2,6 +2,8 @@
 
 > webpack + vue + vuex + vue-router + axios 多页/单页启动模板
 
+> 升级到 vue2.0 (webpack2 + vue2 + vuex2 + vue-router2) 请使用[Vue2 快速开发模板](https://github.com/lkiarest/webpack/tree/app2)
+
 仅提供模板工程，不做任何多余的事情(The Single Responsibility Principle)
 
 ### 安装方式（基于vue-cli）
