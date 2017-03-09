@@ -1,13 +1,15 @@
 # vue-webpack-boilerplate
 
-> webpack + vue2 + vuex2 + vue-router2 + axios 多页/单页启动模板
+基于[element组件库](http://element.eleme.io)
+
+> webpack + vue2 + vuex2 + vue-router2 + axios + element 多页/单页启动模板
 
 仅提供模板工程，不做任何多余的事情(The Single Responsibility Principle)
 
 ### 安装方式（基于vue-cli）
 ``` bash
 $ npm install -g vue-cli
-$ vue init lkiarest/webpack#app2 my-project
+$ vue init lkiarest/webpack#element my-project
 $ cd my-project
 $ npm install
 $ npm run dev # dev mode

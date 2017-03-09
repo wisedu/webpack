@@ -16,7 +16,10 @@ module.exports = {
     },
     babelDir: [], // 指定允许使用babel-loader编译的文件目录或路径匹配，默认已支持src
     loaders: [], // 增加其他文件类型的loader，默认已支持 vue
-    csslibs: [], // 在index.html中需要引入的 css lib
+    csslibs: [
+        '//cdn.bootcss.com/normalize/5.0.0/normalize.css',
+        '//unpkg.com/element-ui/lib/theme-default/index.css'
+    ], // 在index.html中需要引入的 css lib
     jslibs: [ // 在 index.html 中需要引入的 js lib， vue 和 router 必须引入，其余可选
         '//cdn.bootcss.com/vue/2.1.10/vue.min.js',
         //'https://unpkg.com/vue@2.1.10/dist/vue.js',
@@ -25,6 +28,7 @@ module.exports = {
         '//cdn.bootcss.com/vue-i18n/5.0.0/vue-i18n.min.js',
         // 'https://unpkg.com/vue-i18n@5.0.1/dist/vue-i18n.js',
         '//cdn.bootcss.com/vuex/2.1.2/vuex.min.js',
-        '//cdn.bootcss.com/axios/0.15.3/axios.min.js'
+        '//cdn.bootcss.com/axios/0.15.3/axios.min.js',
+        '//unpkg.com/element-ui/lib/index.js'
     ]
 }
