@@ -95,6 +95,7 @@
     "ora": "^1.1.0",
     "serve-static": "^1.11.1",
     "shelljs": "^0.6.0",
+    "style-loader": "^0.14.1",
     "url-loader": "^0.5.7",
     "vue": "^2.1.0",
     "vue-html-loader": "^1.2.4",
