@@ -8,14 +8,14 @@
 </template>
 
 <script>
-    import {Button, Dialog} from 'element-ui';
+    import {Button, Dialog} from 'element-ui'
 
-    Vue.use(Button);
-    Vue.use(Dialog);
+    Vue.use(Button)
+    Vue.use(Dialog)
 
     const _send = function() {
-        this.visible = true;
-    };
+        this.visible = true
+    }
 
     export default {
         data: () => ({
@@ -24,7 +24,7 @@
         methods: {
             send: _send
         }
-    };
+    }
 </script>
 
 <style scoped>

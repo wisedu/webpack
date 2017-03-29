@@ -4,19 +4,20 @@
 /**
  * 全局参数配置
  */
-var path = require('path');
+var path = require('path')
 
-const MIN_JS = true; // 是否使用压缩版本的 js 库
+const MIN_JS = true // 是否使用压缩版本的 js 库
 
 const _jsUrl = (base) => {
-    return base + (MIN_JS ? '.min.js' : '.js');
-};
+    return base + (MIN_JS ? '.min.js' : '.js')
+}
 
-const FE_BOWER_BASE = 'http://res.wisedu.com/bower_components';
+// const FE_BOWER_BASE = 'http://res.wisedu.com/bower_components'
+const BOOTCDN_BASE = 'https://cdn.bootcss.com'
 
 module.exports = {
     proxy: { // DEV 模式下访问后端 api 时防止跨域使用的代理
-        "/wec-portal-nk": "http://172.16.7.75:8000"
+        // '/wec-portal-nk': 'http://172.16.7.75:8000'
     },
     alias: { // 自定义webpack依赖的别名，默认已支持 src/pages/config/node_modules
         'components': 'src/components', // 公共组件
@@ -32,15 +33,23 @@ module.exports = {
     babelDir: [], // 指定允许使用babel-loader编译的文件目录或路径匹配，默认已支持src
     loaders: [], // 增加其他文件类型的loader，默认已支持 vue
     csslibs: [ // 在index.html中需要引入的 css lib
+        `${BOOTCDN_BASE}/element-ui/1.2.5/theme-default/index.css`
     ],
     jslibs: [ // 在 index.html 中需要引入的 js lib， vue 和 router 必须引入，其余可选
-        _jsUrl(`${FE_BOWER_BASE}/bluebird/bluebird`),
-        _jsUrl(`${FE_BOWER_BASE}/vue2/vue`),
-        _jsUrl(`${FE_BOWER_BASE}/vue2/vue-router`),
-        _jsUrl(`${FE_BOWER_BASE}/vue2/vue-i18n`),
-        _jsUrl(`${FE_BOWER_BASE}/vue2/vuex`),
-        _jsUrl(`${FE_BOWER_BASE}/vue2/axios`),
-        `${FE_BOWER_BASE}/iscroll/iscroll.js`
+        // _jsUrl(`${FE_BOWER_BASE}/bluebird/bluebird`),
+        // _jsUrl(`${FE_BOWER_BASE}/vue2/vue`),
+        // _jsUrl(`${FE_BOWER_BASE}/vue2/vue-router`),
+        // _jsUrl(`${FE_BOWER_BASE}/vue2/vue-i18n`),
+        // _jsUrl(`${FE_BOWER_BASE}/vue2/vuex`),
+        // _jsUrl(`${FE_BOWER_BASE}/vue2/axios`),
+        // `${FE_BOWER_BASE}/iscroll/iscroll.js`,
+        _jsUrl(`${BOOTCDN_BASE}/bluebird/3.5.0/bluebird`),
+        _jsUrl(`${BOOTCDN_BASE}/vue/2.2.4/vue`),
+        _jsUrl(`${BOOTCDN_BASE}/vue-router/2.2.1/vue-router`),
+        _jsUrl(`${BOOTCDN_BASE}/vue-i18n/5.0.3/vue-i18n`),
+        _jsUrl(`${BOOTCDN_BASE}/vuex/2.2.1/vuex`),
+        _jsUrl(`${BOOTCDN_BASE}/axios/0.15.3/axios`),
+        `${BOOTCDN_BASE}/element-ui/1.2.5/index.js`
     ],
-    distDir: path.resolve(__dirname, 'dist') // 执行 build 时发布的路径，可以指定其他路径比如 '../webapp'
+    distDir: path.resolve(__dirname, 'docs') // 执行 build 时发布的路径，可以指定其他路径比如 '../webapp'
 }
