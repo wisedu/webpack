@@ -27,7 +27,8 @@ module.exports = {
     "moment": true,
     "Vue": true,
     "Vuex": true,
-    "VueRouter": true
+    "VueRouter": true,
+    "axios": true
   },
   // add your custom rules here
   'rules': {

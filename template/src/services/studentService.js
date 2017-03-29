@@ -6,4 +6,4 @@ import api from 'api'
 
 export const getInfo = (info) => {
     return axios.post(api.USER_INFO, info)
-};
+}

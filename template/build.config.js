@@ -6,10 +6,10 @@
  */
 var path = require('path')
 
-const MIN_JS = true // 是否使用压缩版本的 js 库
+const __DEBUG__ = process.env.NODE_ENV === 'development' // 是否开发模式
 
 const _jsUrl = (base) => {
-    return base + (MIN_JS ? '.min.js' : '.js')
+    return base + (__DEBUG__ ? '.js' : '.min.js')
 }
 
 // const FE_BOWER_BASE = 'http://res.wisedu.com/bower_components'
