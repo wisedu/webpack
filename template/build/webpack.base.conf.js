@@ -4,7 +4,11 @@ var assign = require('object-assign')
 var config = require('./config')
 var utils = require('./utils')
 var projectRoot = path.resolve(__dirname, '../')
-var globalConf = require('../src/config/global')
+var globalConf = require('../build.config')
+
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
 
 var hasElement = function(arr) { // 判断数组是否不为空
     return arr && arr.length > 0;
@@ -32,24 +36,32 @@ var alias = assign({
 var loaders = [
   {
     test: /\.vue$/,
-    loader: 'vue'
+    loader: 'vue-loader'
   },
   {
     test: /\.js$/,
-    loader: 'babel',
+    loader: 'babel-loader',
     include: babelDir
   },
   {
     test: /\.json$/,
-    loader: 'json'
+    loader: 'json-loader'
   },
   {
     test: /\.html$/,
-    loader: 'vue-html'
+    loader: 'vue-html-loader'
+  },
+  {
+    test: /\.css$/,
+    loader: 'style-loader!css-loader'
+  },
+  {
+    test: /\.less$/,
+    loader: 'style-loader!css-loader!less-loader'
   },
   {
     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-    loader: 'url',
+    loader: 'url-loader',
     query: {
       limit: 10000,
       name: utils.assetsPath('statics/imgs/hash/[name].[hash:7].[ext]')
@@ -57,7 +69,7 @@ var loaders = [
   },
   {
     test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-    loader: 'url',
+    loader: 'url-loader',
     query: {
       limit: 10000,
       name: utils.assetsPath('statics/fonts/[name].[hash:7].[ext]')
@@ -73,7 +85,7 @@ module.exports = {
   entry: config.entry,
   output: {
     path: config.build.assetsRoot,
-    publicPath: process.env.NODE_ENV === 'production' ? '../' : config.dev.assetsPublicPath,
+    publicPath: process.env.NODE_ENV === 'production' ? './' : config.dev.assetsPublicPath,
     filename: '[name]/[name].js'
   },
   resolve: {
