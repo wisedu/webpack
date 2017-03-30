@@ -6,7 +6,7 @@
 
 仅提供模板工程，不做任何多余的事情(The Single Responsibility Principle)
 
-### 安装方式（基于vue-cli）
+### install（vue-cli）
 ``` bash
 $ npm install -g vue-cli
 $ vue init lkiarest/webpack#element my-project
@@ -16,14 +16,14 @@ $ npm run dev # dev mode
 $ npm run build # publish mode
 ```
 
-### 多语言(optional)
+### i18n (optional)
 
 1. 将多语言文件(cn.json , en.json ...) 放在src/config/i18n 目录下，编译工具会使用 vue-i18n 将多语言注入到app中。
 1. 页面按照 vue-i8n 的[文档](https://github.com/kazupon/vue-i18n) 书写即可
 
 ### Vuex (optional)
 
-### 可在一个项目中发布多个独立应用或单个应用
+### develop one or more apps in one project
 
 1. src/pages 目录下包含多个应用(hello1, hello2)
 
@@ -50,3 +50,37 @@ $ npm run build # publish mode
     ./startup.bat #启动http server
     // 访问 http://localhost:3000/index.html
     ```
+### structure
+```
+.
+├── build                         # webpack config files (not suggest to modify build files)
+│   ├── template/                 # template of index and router settings
+|   └── config/                   # build configurations
+|
+├── src/
+│   ├── components/               # reusable components (optional)
+│   │   └── ...
+│   ├── config/                   # global configurations like i18n, APIs etc
+│   │   └── ...
+│   ├── pages/                    # the location of all SPA apps
+│   │   ├── app1                  # app1 will be built as a single app
+|   |   |    ├── routes.js        # vue-router config for app1
+|   |   |    ├── config.json      # app config(optional) will overwrite settings in build.config.js
+|   |   |    └── ...
+│   │   └── app2                  # another SPA app
+│   │        └── ...
+│   ├── services                  # services (optional)
+│   │   └── ...
+│   ├── statics                   # pure static assets (directly copied)
+│   │   └── ...
+│   └── vuex/                     # Vuex store file (optional)
+│       └── ...
+│
+├── .babelrc                      # babel config
+├── .editorconfig                 # editor config
+├── .eslintrc.js                  # eslint config
+├── build.config.js               # global build config like external js/css libs, alias etc
+├── server.js                     # a simple server to check result of `npm run build`, start with `node server.js`
+└── package.json                  # build scripts and dependencies
+
+```
