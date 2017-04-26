@@ -1,7 +1,7 @@
 /**
  * 全局唯一 store，做状态共享
  */
-Vue.use(Vuex);
+// Vue.use(Vuex) // 使用 js include 引入 vuex 不需要此语句
 
 // 应用状态
 const state = {

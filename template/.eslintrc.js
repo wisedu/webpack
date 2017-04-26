@@ -8,7 +8,7 @@ module.exports = {
   extends: 'standard',
   // required to lint *.vue files
   plugins: [
-    'html'
+    'vue'
   ],
   "env": {
     "browser": true //执行环境 浏览器
@@ -22,7 +22,8 @@ module.exports = {
     "moment": true,
     "Vue": true,
     "Vuex": true,
-    "VueRouter": true
+    "VueRouter": true,
+    "axios": true
   },
   // add your custom rules here
   'rules': {
@@ -37,6 +38,8 @@ module.exports = {
     "semi": [2, "always"],
     "eqeqeq": [1, "allow-null"],
     "new-cap": [1, { "newIsCap": false, "capIsNew": false }],
-    "no-new": [0]
+    "no-new": [0],
+    "one-var": 1,//连续声明
+    "space-before-function-paren": [0, "always"]//函数定义时括号前面要不要有空格
   }
 }

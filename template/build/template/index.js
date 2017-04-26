@@ -10,6 +10,11 @@ Object.keys(langs).forEach(function (lang) {
     Vue.locale(lang, langs[lang]);
 });
 
+// 启用 vue 开发者工具
+if (process.env.NODE_ENV === 'development') {
+    Vue.config.devtools = true
+}
+
 router.init(routes);
 
 router.start(index, '#app');

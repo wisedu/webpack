@@ -33,30 +33,42 @@
         <hr>
         <div class='caselist'>
             <div class='case'>
-                \{{$t('title')}}
+                {{$t('title')}}
             </div>
             <div class='case'>
-                <button @click='toggleLang'>\{{$t('switchLang')}}</button>
+                <button @click='toggleLang'>{{$t('switchLang')}}</button>
             </div>
         </div>
         <h3>经典vuex测试</h3>
         <hr>
         <div class='caselist'>
             <div class='case'>
-                计数：\{{getCount}}
+                计数：{{getCount}}
             </div>
             <div class='case'>
                 <button @click='incrementCounter'>加加</button>
                 <button @click='decrementCounter'>减减</button>
             </div>
         </div>
+        <h3>axios测试</h3>
+        <hr>
+        <div class='caselist'>
+            <div class='case'>
+                <button @click='sendReq'>axios请求</button>
+            </div>
+            <div class='case'>
+                <button @click='sendReqVR'>vue-resource请求</button>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
+    import api from 'api';
     import store from 'vuex/store';
     import {getCount, incrementCounter, decrementCounter} from 'vuex/counter.action';
     import Btn from 'components/button';
+    import {getInfo} from 'services/studentService';
 
     export default {
         data: () => ({
@@ -74,6 +86,21 @@
             },
             toggleLang () {
                 Vue.config.lang = Vue.config.lang === 'en' ? 'cn' : 'en';
+            },
+            sendReq () {
+                getInfo({id: 1}).then(data => {
+                    alert(JSON.stringify(data));
+                }, (data) => {
+                    alert(data.message);
+                    console.error(data);
+                })
+            },
+            sendReqVR () {
+                this.$http.post(api.TEST_302).then(data => {
+                    console.log(data);
+                }, (err) => {
+                    console.error('发送失败：', err);
+                });
             }
         },
         vuex: {

@@ -4,7 +4,7 @@ var assign = require('object-assign')
 var config = require('./config')
 var utils = require('./utils')
 var projectRoot = path.resolve(__dirname, '../')
-var globalConf = require('../src/config/global')
+var globalConf = require('../build.config')
 
 var hasElement = function(arr) { // 判断数组是否不为空
     return arr && arr.length > 0;

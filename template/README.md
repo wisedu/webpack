@@ -9,9 +9,7 @@
 1. 将多语言文件(cn.json , en.json ...) 放在src/config/i18n 目录下，编译工具会使用 vue-i18n 将多语言注入到app中。
 1. 页面按照 vue-i8n 的[文档](https://github.com/kazupon/vue-i18n) 书写即可
 
-### Vuex
-
-默认支持，可参考示例（hello）用法。
+### Vuex (optional)
 
 ### 可在一个项目中发布多个独立应用或单个应用
 
