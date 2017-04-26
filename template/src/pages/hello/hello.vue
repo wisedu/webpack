@@ -33,17 +33,17 @@
         <hr>
         <div class='caselist'>
             <div class='case'>
-                {{$t('title')}}
+                \{{$t('title')}}
             </div>
             <div class='case'>
-                <button @click='toggleLang'>{{$t('switchLang')}}</button>
+                <button @click='toggleLang'>\{{$t('switchLang')}}</button>
             </div>
         </div>
         <h3>经典vuex测试</h3>
         <hr>
         <div class='caselist'>
             <div class='case'>
-                计数：{{getCount}}
+                计数：\{{getCount}}
             </div>
             <div class='case'>
                 <button @click='incrementCounter'>加加</button>
