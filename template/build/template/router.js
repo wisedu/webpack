@@ -21,11 +21,21 @@ var _addSubRouter = (path, subRoutes, segments) => {
 
 var _init = (routes, callbacks) => {
     _setRoutes(routes);
+    _setTitle();
 
     if (callbacks) {
         callbacks.beforeEach && router.beforeEach(callbacks.beforeEach);
         callbacks.afterEach && router.afterEach(callbacks.afterEach);
     }
+};
+
+var _setTitle = () => {
+    router.afterEach(transition => {
+        var title = transition.to.meta && transition.to.meta.title;
+        if (title) {
+            document.title = title;
+        }
+    });
 };
 
 var _start = (comp, selector) => {

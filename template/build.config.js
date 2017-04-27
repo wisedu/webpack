@@ -70,6 +70,10 @@ module.exports = {
         'conf': 'src/config' // 各种配置信息
     },
     babelDir: [/bh-vue/, /wec-vue/], // 指定允许使用babel-loader编译的文件目录或路径匹配，默认已支持src
+    meta: {
+        url: 'http://res.wisedu.com/WeCloud/emap-meta/wec-smmp/wec-smmp-sinfo/', // 远程服务器地址
+        dir: 'src/statics/meta-info' // 本地保存位置
+    },
     loaders: [], // 增加其他文件类型的loader，默认已支持 vue
     csslibs: FE_CSS_LIBS.map(item => _feLib(item)),
     jslibs: BOWER_JS_LIBS.map(item => _bowerLib(item)).concat(FE_JS_LIBS.map(item => _feLib(item))),

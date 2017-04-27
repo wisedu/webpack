@@ -113,7 +113,10 @@ var getPageConf = function(confFile) {
 };
 
 var prepareEntryFiles = function(app) {
-    var title = getTitle(fs.readFileSync(path.resolve(appDir, app, 'routes.js'), 'utf-8'));
+    var routesFile = path.resolve(appDir, app, 'routes.js');
+    var title = app;
+    var routesImport = '';
+    // var title = getTitle(fs.readFileSync(routesFile, 'utf-8'));
     var pageConfig = getPageConf(path.resolve(appDir, app, 'config.json'));
     var pageLang = pageConfig.lang;
 
@@ -121,13 +124,20 @@ var prepareEntryFiles = function(app) {
     var vendors = getVendors(app);
     mkdir(tmpAppDir);
 
-    var htmlContent = tmpIndexHtml.replace('[WIN_TITLE]', title || app)
+    // 检查是否有子路由定义
+    if (fs.existsSync(routesFile)) {
+        routesImport = `import routes from 'src/pages/${app}/routes';\nrouter.init(routes);`;
+    }
+
+    var htmlContent = tmpIndexHtml.replace('[WIN_TITLE]', title)
         .replace('[CSS_LIBS]', vendors.css) // 插入自定义 css
         .replace('[JS_LIBS]', vendors.js); // 插入自定义 js
+
     var entryName = toCamel(app);
     var jsContent = tmpIndexJs.replace(/\[PAGE_NAME\]/g, app)
         .replace(/\[ENTRY_NAME\]/g, entryName)
-        .replace('[LANG_NAME]', pageLang);
+        .replace('[LANG_NAME]', pageLang)
+        .replace('/* [IMPORT_ROUTER] */', routesImport);
 
     fs.writeFileSync(path.resolve(tmpAppDir, 'index.html'), htmlContent, 'utf-8');
     fs.writeFileSync(path.resolve(tmpAppDir, 'index.js'), jsContent, 'utf-8');

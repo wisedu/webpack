@@ -6,8 +6,6 @@
 </template>
 
 <script type="text/javascript">
-    import 'statics/style/common.less';
-
     export default {
         methods: {
             back () {
