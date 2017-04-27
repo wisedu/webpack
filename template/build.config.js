@@ -58,7 +58,7 @@ module.exports = {
     },
     alias: { // 自定义webpack依赖的别名，默认已支持 src/pages/config/node_modules
         'components': 'src/components', // 公共组件
-        'bh-vue': 'node_modules/bh-vue/dist', // bh-vue 基础组件库
+        'bh-vue': 'node_modules/bh-vue', // bh-vue 基础组件库
         'wec-vue': 'node_modules/wec-vue', // wec-vue (公有云业务)组件库
         'api': 'src/config/api', // 定义后端公共接口
         'services': 'src/services', // 公共服务层
@@ -74,4 +74,4 @@ module.exports = {
     csslibs: FE_CSS_LIBS.map(item => _feLib(item)),
     jslibs: BOWER_JS_LIBS.map(item => _bowerLib(item)).concat(FE_JS_LIBS.map(item => _feLib(item))),
     distDir: path.resolve(__dirname, 'dist') // 执行 build 时发布的路径，可以指定其他路径比如 '../webapp'
-}
+};

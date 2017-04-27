@@ -19,6 +19,12 @@
                 </div>
             </div>
         </div>
+        <h3>子路由</h3>
+        <hr>
+        <a v-link='"sub"'>访问</a>
+        <div class="caselist">
+            <router-view></router-view>
+        </div>
         <h3>web font 测试</h3>
         <hr>
         <div class='caselist'>
@@ -36,7 +42,7 @@
                 \{{$t('title')}}
             </div>
             <div class='case'>
-                <button @click='toggleLang'>\{{$t('switchLang')}}</button>
+                <button class='btn' @click='toggleLang'>\{{$t('switchLang')}}</button>
             </div>
         </div>
         <h3>经典vuex测试</h3>
@@ -46,18 +52,18 @@
                 计数：\{{getCount}}
             </div>
             <div class='case'>
-                <button @click='incrementCounter'>加加</button>
-                <button @click='decrementCounter'>减减</button>
+                <button class='btn' @click='incrementCounter'>加加</button>
+                <button class='btn' @click='decrementCounter'>减减</button>
             </div>
         </div>
         <h3>axios测试</h3>
         <hr>
         <div class='caselist'>
             <div class='case'>
-                <button @click='sendReq'>axios请求</button>
+                <button class='btn' @click='sendReq'>axios请求</button>
             </div>
             <div class='case'>
-                <button @click='sendReqVR'>vue-resource请求</button>
+                <button class='btn' @click='sendReqVR'>vue-resource请求</button>
             </div>
         </div>
     </div>
@@ -93,7 +99,7 @@
                 }, (data) => {
                     alert(data.message);
                     console.error(data);
-                })
+                });
             },
             sendReqVR () {
                 this.$http.post(api.TEST_302).then(data => {
@@ -118,13 +124,20 @@
 
 <style>
     body {
+        padding: 2rem;
         background: url('../../statics/imgs/sideBack.png');
+        background-size: contain;
     }
 </style>
 
 <style scoped lang='less'>
     .hello {
         color: #fff;
+
+        h3 {
+            color: #fff;
+            line-height: 3rem;
+        }
     }
 
     .caselist {
@@ -140,5 +153,19 @@
 
     img {
         margin: 16px;
+    }
+
+    .btn {
+        display: inline-block;
+        border: 1px solid #ddd;
+        padding: 0.1rem 1rem;
+        color: #333;
+        background-color: #eee;
+        cursor: pointer;
+        user-select: none;
+
+        &:hover {
+            background: #eee;
+        }
     }
 </style>

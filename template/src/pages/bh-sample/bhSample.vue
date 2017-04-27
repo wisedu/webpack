@@ -8,7 +8,7 @@
 </template>
 
 <script>
-    import BhButton from 'bh-vue/BhButton';
+    import BhButton from 'bh-vue/dist/BhButton';
     import ContentWrapper from 'components/contentWrapper';
 
     export default {
@@ -17,5 +17,5 @@
             copyright: '版权信息：© 2015 江苏金智教育信息股份有限公司 苏ICP备10204514号'
         }),
         components: {ContentWrapper, BhButton}
-    }
+    };
 </script>

@@ -2,7 +2,7 @@
     <bh-header :slogon='appName' user-info=''></bh-header>
     <main>
         <article bh-layout-role="single" v-el:main>
-            <h2>{{pageName}}</h2>
+            <h2>\{{pageName}}</h2>
             <section>
                 <slot></slot>
             </section>
@@ -17,8 +17,8 @@
      * 默认包含 res 库中的 header 和 footer 样式，
      * 可根据需要自行修改。
      */
-    import BhHeader from 'bh-vue/BhHeader';
-    import BhFooter from 'bh-vue/BhFooter';
+    import BhHeader from 'bh-vue/dist/BhHeader';
+    import BhFooter from 'bh-vue/dist/BhFooter';
 
     export default {
         props: {

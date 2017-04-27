@@ -1,12 +1,11 @@
 /**
  * 页面内路由定义
  */
-const hello = resolve => require(['./hello'], resolve);
+// const hello = resolve => require(['./hello'], resolve);
+const sub = resolve => require(['./sub'], resolve);
 
-export default [
-    {
-        path: '/',
-        component: hello,
-        meta: {title: '首页'}
+export default {
+    'sub': {
+        component: sub
     }
-];
+};
