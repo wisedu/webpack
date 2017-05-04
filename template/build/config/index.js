@@ -3,7 +3,11 @@
 require('babel-register');
 var path = require('path');
 var fs = require('fs');
+var ora = require('ora')
 require('shelljs/global');
+
+var spinner = ora('preparing...');
+spinner.start();
 
 // 创建临时入口文件供打包使用
 var tmpDir = path.resolve(__dirname, '../tmp');
@@ -19,9 +23,12 @@ if (apps.length === 0) {
     throw 'no app defined in ./apps/';
 }
 
+spinner.text = 'making multi languages...';
 // 创建多语言文件
 var localeTool = require('./localeTool');
 localeTool.make();
+
+spinner.text = 'making entry files...';
 
 var entries = {};
 var dists = {};
@@ -70,7 +77,6 @@ var getVendors = function(pageName) { // 读取页面需要额外加载的第三
 };
 
 var buildConf = {
-    'env': require('./prod.env'),
     // 指定build打包发布路径
     'assetsRoot': globalConf.distDir,
     'assetsSubDirectory': '',
@@ -156,12 +162,13 @@ if (apps.length > 1) {
     buildConf[app] = path.resolve(globalConf.distDir, 'index.html');
 }
 
+spinner.stop();
+
 module.exports = {
   // 可以在此处指定多个入口文件
   entry: entries,
   build: buildConf,
   dev: {
-    'env': require('./dev.env'),
     'port': 3000,
     'assetsSubDirectory': '',
     'assetsPublicPath': '/',
