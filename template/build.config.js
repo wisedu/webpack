@@ -12,7 +12,6 @@ const _jsUrl = (base) => {
     return base + (__DEBUG__ ? '.js' : '.min.js')
 }
 
-// const FE_BOWER_BASE = 'http://res.wisedu.com/bower_components'
 const BOOTCDN_BASE = 'https://cdn.bootcss.com'
 
 module.exports = {
@@ -36,13 +35,6 @@ module.exports = {
         `${BOOTCDN_BASE}/element-ui/1.2.5/theme-default/index.css`
     ],
     jslibs: [ // 在 index.html 中需要引入的 js lib， vue 和 router 必须引入，其余可选
-        // _jsUrl(`${FE_BOWER_BASE}/bluebird/bluebird`),
-        // _jsUrl(`${FE_BOWER_BASE}/vue2/vue`),
-        // _jsUrl(`${FE_BOWER_BASE}/vue2/vue-router`),
-        // _jsUrl(`${FE_BOWER_BASE}/vue2/vue-i18n`),
-        // _jsUrl(`${FE_BOWER_BASE}/vue2/vuex`),
-        // _jsUrl(`${FE_BOWER_BASE}/vue2/axios`),
-        // `${FE_BOWER_BASE}/iscroll/iscroll.js`,
         _jsUrl(`${BOOTCDN_BASE}/bluebird/3.5.0/bluebird`),
         _jsUrl(`${BOOTCDN_BASE}/vue/2.2.4/vue`),
         _jsUrl(`${BOOTCDN_BASE}/vue-router/2.2.1/vue-router`),

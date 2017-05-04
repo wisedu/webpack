@@ -6,16 +6,15 @@ var config = require('./config')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+var OpenBrowserPlugin = require('open-browser-webpack-plugin')
+// var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 var plugins = [
-    new webpack.DefinePlugin({
-      'process.env': config.dev.env
-    }),
     // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
     // new webpack.optimize.OccurenceOrderPlugin(), // The plugin is no longer needed and occurrence order is on by default.
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+    new OpenBrowserPlugin({url: `http://localhost:${config.dev.port}`})
 ];
 
 // add hot-reload related code to entry chunks
@@ -41,7 +40,7 @@ if (entryKeys.length > 1) {
     }));
 }
 
-plugins.push(new FriendlyErrorsPlugin())
+// plugins.push(new FriendlyErrorsPlugin())
 
 module.exports = merge(baseWebpackConfig, {
   module: {
