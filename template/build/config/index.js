@@ -121,7 +121,7 @@ var getPageConf = function(confFile) {
 var prepareEntryFiles = function(app) {
     var title = getTitle(fs.readFileSync(path.resolve(appDir, app, 'routes.js'), 'utf-8'));
     var pageConfig = getPageConf(path.resolve(appDir, app, 'config.json'));
-    var pageLang = pageConfig.lang;
+    var pageLang = pageConfig.lang || 'cn'; // 若未定义则默认中文
 
     var tmpAppDir = path.resolve(tmpDir, app);
     var vendors = getVendors(app);
