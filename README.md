@@ -2,7 +2,7 @@
 
 > webpack + vue + vuex + vue-router + axios 多页/单页启动模板
 
-> 升级到 vue2.0 (webpack2 + vue2 + vuex2 + vue-router2) 请使用[Vue2 快速开发模板](https://github.com/lkiarest/webpack/tree/app2)
+> 升级到 vue2.0 (webpack2 + vue2 + vuex2 + vue-router2) 请使用[Vue2 快速开发模板](https://github.com/wisedu/webpack/tree/app2)
 
 > 需要默认集成 element-ui(vue2) 请使用[element-ui 快速开发模板](https://github.com/lkiarest/element-ui-startkit)
 
@@ -11,7 +11,7 @@
 ### 安装方式（基于vue-cli）
 ``` bash
 $ npm install -g vue-cli
-$ vue init lkiarest/webpack my-project
+$ vue init wisedu/webpack my-project
 $ cd my-project
 $ npm install
 $ npm run dev # dev mode
