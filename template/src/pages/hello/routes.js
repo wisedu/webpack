@@ -1,13 +1,13 @@
 /**
  * 页面内路由定义
  */
-const hello = resolve => require(['./hello'], resolve);
+const main = resolve => require(['./main'], resolve);
 const sub = resolve => require(['./sub'], resolve);
 
 export default {
     '/': {
-        component: hello,
-        meta: {title: 'hello 首页'}
+        component: main,
+        meta: {title: 'main 首页'}
     },
     'sub': {
         component: sub,

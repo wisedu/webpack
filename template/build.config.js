@@ -76,6 +76,6 @@ module.exports = {
     },
     loaders: [], // 增加其他文件类型的loader，默认已支持 vue
     csslibs: FE_CSS_LIBS.map(item => _feLib(item)),
-    jslibs: BOWER_JS_LIBS.map(item => _bowerLib(item)).concat(FE_JS_LIBS.map(item => _feLib(item))),
+    jslibs: BOWER_JS_LIBS.map(item => _bowerLib(item)).concat(FE_JS_LIBS.map(item => _feLib(item))).concat(`${CDN_BASE}/custom/interceptors/httpInterceptor.js`),
     distDir: path.resolve(__dirname, 'dist') // 执行 build 时发布的路径，可以指定其他路径比如 '../webapp'
 };

@@ -45,9 +45,20 @@ var mergeLangs = function(files) {
     }, {});
 };
 
+var watchLangFiles = function() {
+    fs.watch(localeDir, function(eventType, filename) {
+        console.log('reload i18n files');
+        make();
+    });
+};
+
+var make = function() {
+    var merged = mergeLangs(findLangs(localeDir));
+    fs.writeFileSync(distFile, JSON.stringify(merged), 'utf-8');
+};
+
+watchLangFiles();
+
 module.exports = {
-    make: function() {
-        var merged = mergeLangs(findLangs(localeDir));
-        fs.writeFileSync(distFile, JSON.stringify(merged), 'utf-8');
-    }
+    make: make
 };

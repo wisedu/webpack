@@ -88,7 +88,10 @@
                 this.imgUrl = '';
             },
             say () {
-                alert('正常 !');
+                const imgUrl = document.defaultView.getComputedStyle(document.body).backgroundImage;
+                if (/[^\.]+?\.png"\)$/.test(imgUrl)) {
+                    alert('正常 !');
+                }
             },
             toggleLang () {
                 Vue.config.lang = Vue.config.lang === 'en' ? 'cn' : 'en';

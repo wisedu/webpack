@@ -128,7 +128,10 @@ var prepareEntryFiles = function(app) {
 
     var tmpAppDir = path.resolve(tmpDir, app);
     var vendors = getVendors(app);
-    mkdir(tmpAppDir);
+
+    if (!fs.existsSync(tmpAppDir)) {
+        mkdir(tmpAppDir);
+    }
 
     // 检查是否有子路由定义
     if (fs.existsSync(routesFile)) {
@@ -144,23 +147,36 @@ var prepareEntryFiles = function(app) {
         .replace(/\[ENTRY_NAME\]/g, entryName)
         .replace('[LANG_NAME]', pageLang)
         .replace('/* [IMPORT_ROUTER] */', routesImport);
-
     fs.writeFileSync(path.resolve(tmpAppDir, 'index.html'), htmlContent, 'utf-8');
     fs.writeFileSync(path.resolve(tmpAppDir, 'index.js'), jsContent, 'utf-8');
 };
 
-if (apps.length > 1) {
-    apps.forEach(app => {
+var buildEntryFiles = function() {
+    if (apps.length > 1) {
+        apps.forEach(app => {
+            prepareEntryFiles(app);
+            entries[app] = `./build/tmp/${app}/index.js`;
+            buildConf[app] = `./${app}/index.html`;
+        });
+    } else { // 若只有一个 app，则直接打包到根目录，不需要用子目录来区分
+        var app = apps[0];
         prepareEntryFiles(app);
         entries[app] = `./build/tmp/${app}/index.js`;
-        buildConf[app] = `./${app}/index.html`;
-    });
-} else { // 若只有一个 app，则直接打包到根目录，不需要用子目录来区分
-    var app = apps[0];
-    prepareEntryFiles(app);
-    entries[app] = `./build/tmp/${app}/index.js`;
-    buildConf[app] = path.resolve(globalConf.distDir, 'index.html');
-}
+        buildConf[app] = path.resolve(globalConf.distDir, 'index.html');
+    }
+};
+
+buildEntryFiles();
+
+fs.watch(templateHtml, function(type, file) {
+    tmpIndexHtml = fs.readFileSync(templateHtml, 'utf-8');
+    buildEntryFiles();
+});
+
+fs.watch(templateJs, function(type, file) {
+    tmpIndexJs = fs.readFileSync(templateJs, 'utf-8');
+    buildEntryFiles();
+});
 
 spinner.stop();
 
