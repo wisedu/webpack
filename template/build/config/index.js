@@ -139,18 +139,32 @@ var prepareEntryFiles = function(app) {
     fs.writeFileSync(path.resolve(tmpAppDir, 'index.js'), jsContent, 'utf-8');
 };
 
-if (apps.length > 1) {
-    apps.forEach(app => {
+var buildEntryFiles = function() {
+    if (apps.length > 1) {
+        apps.forEach(app => {
+            prepareEntryFiles(app);
+            entries[app] = `./build/tmp/${app}/index.js`;
+            buildConf[app] = `./${app}/index.html`;
+        });
+    } else { // 若只有一个 app，则直接打包到根目录，不需要用子目录来区分
+        var app = apps[0];
         prepareEntryFiles(app);
         entries[app] = `./build/tmp/${app}/index.js`;
-        buildConf[app] = `./${app}/index.html`;
-    });
-} else { // 若只有一个 app，则直接打包到根目录，不需要用子目录来区分
-    var app = apps[0];
-    prepareEntryFiles(app);
-    entries[app] = `./build/tmp/${app}/index.js`;
-    buildConf[app] = path.resolve(globalConf.distDir, 'index.html');
-}
+        buildConf[app] = path.resolve(globalConf.distDir, 'index.html');
+    }
+};
+
+buildEntryFiles();
+
+fs.watch(templateHtml, function(type, file) {
+    tmpIndexHtml = fs.readFileSync(templateHtml, 'utf-8');
+    buildEntryFiles();
+});
+
+fs.watch(templateJs, function(type, file) {
+    tmpIndexJs = fs.readFileSync(templateJs, 'utf-8');
+    buildEntryFiles();
+});
 
 spinner.stop();
 
